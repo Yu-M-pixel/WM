@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* === TITRE CUSTOM GAMING === */
+.custom {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2rem;
+  color: #ff66cc; /* rose néon */
+  background: linear-gradient(90deg, #1a1a40, #2a1a5e);
+  padding: 20px;
+  border: 3px dashed #66ccff; /* bleu néon */
+  text-align: center;
+  box-shadow: 0 0 10px #ff66cc;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+/* === CONTAINER DE LA CARTE === */
+.map-container {
+  height: 80vh;
+  border: 4px double #ff66cc;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #66ccff;
+  background-color: #1a1a2e;
+  margin: 20px auto;
+}
+
+/* === POPUPS (si HTML dans popup) === */
+/* .leaflet-popup-content {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  color: #ffffff;
+  background-color: #2d1b46;
+  padding: 5px;
+} */
+
+/* === SCROLLBAR CUSTOM POUR UNE VIBE RETRO === */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+::-webkit-scrollbar-thumb {
+  background: #ff66cc;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff3399;
+}
+
+/* === BOUTONS SI TU EN AS PLUS TARD === */
+.button-retro {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #ff66cc;
+  color: black;
+  padding: 10px 20px;
+  border: 2px solid #66ccff;
+  box-shadow: 0 0 10px #ff66cc;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.button-retro:hover {
+  background-color: #66ccff;
+  color: black;
+  box-shadow: 0 0 15px #ffffff;
+}
