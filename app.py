@@ -1,4 +1,6 @@
+import folium
 import folium.raster_layers
+import folium.vector_layers
 from ipyleaflet import Map, Marker, TileLayer
 from ipywidgets import HTML, Layout
 from shiny.express import ui,render
@@ -7,7 +9,9 @@ import pandas as pd
 import plotly.express as px
 import folium 
 from folium.plugins import MarkerCluster
-from folium import raster_layers
+from folium import FeatureGroup
+import geopandas as gpd
+from folium import GeoJson
 
 DATA_PATH = "./datas/referentiel_archeologique_de_paris.csv"
 ui.include_css("./styles.css")
@@ -32,9 +36,11 @@ def create_map():
     center_lat, center_lon = 48.8566, 2.3522
     my_map = folium.Map(
         location=[center_lat, center_lon], 
-        zoom_start=12, 
+        zoom_start=11, 
         control_scale=True,
+        tiles= None,
     )
+
     folium.TileLayer(
         tiles="https://tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey=ee88aacf61b2452ead6be5356cc070ac",
         attr="Maps © Thunderforest, Data © OpenStreetMap",
@@ -42,7 +48,9 @@ def create_map():
         control=True
     ).add_to(my_map)
 
-    marker_cluster = MarkerCluster().add_to(my_map)
+    sites_layer = FeatureGroup(name="Sites archéologiques")
+    marker_cluster = MarkerCluster().add_to(sites_layer)
+    sites_layer.add_to(my_map)
 
     for _, row in df_points.iterrows():
         popup_content = f"""
@@ -58,14 +66,14 @@ def create_map():
         ).add_to(marker_cluster)
         my_map.options["control_scale"] = True
 
-# 3️⃣ Couche WMS BRGM — Cavités souterraines
+# 6️⃣ Couche WMS BRGM — Enveloppe inondation (cours d'eau/submersion)
     folium.raster_layers.WmsTileLayer(
-        url="https://geoservices.brgm.fr/risques",
-        name="Cavités souterraines",
-        layers="CAVITE_LOCALISEE",
+        url="https://mapsref.brgm.fr/wxs/georisques/risques",
+        name="Enveloppe inondation (EAIP)",
+        layers="MASQ_EAIP",
         fmt="image/png",
         transparent=True,
-        attr="© BRGM – Cavités",
+        attr="© BRGM – Enveloppe inondation",
         overlay=True,
         control=True
     ).add_to(my_map)
@@ -81,10 +89,39 @@ def create_map():
         overlay=True,
         control=True
     ).add_to(my_map)
+#   Anciennes carrières
+
+    try:
+        # Charger le shapefile avec GeoPandas
+        gdf_carrieres = gpd.read_file("/Users/juliasmacbook/Desktop/MASTER/TGAE/WM/datas/plub_carrieres.shp")
+        print("Nombre de polygones chargés :", len(gdf_carrieres))
+        print("CRS :", gdf_carrieres.crs)
+        print(gdf_carrieres.head())
+
+        # Reprojeter vers WGS84 si besoin (souvent les shapefiles sont en Lambert 93)
+        if gdf_carrieres.crs is None:
+            gdf_carrieres.set_crs(epsg=2154, inplace=True)  # Souvent Lambert 93
+        gdf_carrieres = gdf_carrieres.to_crs(epsg=4326)
+
+        # Ajouter à la carte Folium
+                # Ajouter à la carte Folium
+        folium.GeoJson(
+            data=gdf_carrieres,
+            name="Anciennes carrières (shapefile)",
+            tooltip=folium.GeoJsonTooltip(fields=list(gdf_carrieres.columns[:3])),
+            style_function=lambda x: {
+                'color': 'orange',
+                'weight': 2,
+                'fillOpacity': 0.3,
+            }
+        ).add_to(my_map)
+
+
+    except Exception as e:
+        print("Erreur lors du chargement du shapefile : ", e)
 
     folium.LayerControl().add_to(my_map)
 
-    
     return my_map  
 
 ui.HTML("[TODO]")   
@@ -132,5 +169,7 @@ def histogram():
         uniformtext_minsize=8,
         uniformtext_mode='hide'
     )
+
+
 
     return fig
