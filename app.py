@@ -1,6 +1,5 @@
 import folium
 import folium.raster_layers
-import folium.vector_layers
 from ipyleaflet import Map, Marker, TileLayer
 from ipywidgets import HTML, Layout
 from shiny.express import ui,render
@@ -13,7 +12,15 @@ from folium import FeatureGroup
 import geopandas as gpd
 from folium import GeoJson
 
-DATA_PATH = "./datas/referentiel_archeologique_de_paris.csv"
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, "datas", "referentiel_archeologique_de_paris.csv")
+CARRIERES_PATH = os.path.join(BASE_DIR, "datas", "carrieres", "plub_carriere.shp")
+print("Chemin du shapefile :", CARRIERES_PATH)
+print("Existe ?", os.path.exists(CARRIERES_PATH))
+
+
+
 ui.include_css("./styles.css")
 
 ui.h2("Sites archéologiques à Paris", class_="custom")
@@ -43,8 +50,15 @@ def create_map():
 
     folium.TileLayer(
         tiles="https://tile.thunderforest.com/transport-dark/{z}/{x}/{y}.png?apikey=ee88aacf61b2452ead6be5356cc070ac",
-        attr="Maps © Thunderforest, Data © OpenStreetMap",
+        attr="Maps © Thunderforest",
         name="Thunderforest Transport Dark",
+        control=True
+    ).add_to(my_map)
+
+    folium.TileLayer(
+        tiles="https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=ee88aacf61b2452ead6be5356cc070ac",
+        attr="Maps © Atlas",
+        name="Atlas",
         control=True
     ).add_to(my_map)
 
@@ -56,8 +70,15 @@ def create_map():
         popup_content = f"""
         <b>Adresse:</b> {row['Adresse']} ({row['Commune']})<br>
         <b>Date de l'opération:</b> {row["Date de l'opération"]}<br>
-        <b>Nature de l'opération:</b> {row["Nature de l'opération"]}
-        """
+        <b>Nature de l'opération:</b> {row["Nature de l'opération"]}<br>
+        <b>Antiquité:</b> {row["Antiquité"]}<br>
+        <b>Protohistoire:</b> {row["Protohistoire"]}<br>
+        <b>Moyen-Age:</b> {row["Moyen-Age"]}<br>
+        <b>Temps modernes:</b> {row["Temps modernes"]}<br>
+        <b>Epoque contemporaine:</b> {row["Epoque contemporaine"]}
+
+        
+"""
         
         folium.Marker(
             [row["latitude"], row["longitude"]],
@@ -93,7 +114,7 @@ def create_map():
 
     try:
         # Charger le shapefile avec GeoPandas
-        gdf_carrieres = gpd.read_file("/Users/juliasmacbook/Desktop/MASTER/TGAE/WM/datas/plub_carrieres.shp")
+        gdf_carrieres= gpd.read_file(CARRIERES_PATH)
         print("Nombre de polygones chargés :", len(gdf_carrieres))
         print("CRS :", gdf_carrieres.crs)
         print(gdf_carrieres.head())
@@ -104,10 +125,9 @@ def create_map():
         gdf_carrieres = gdf_carrieres.to_crs(epsg=4326)
 
         # Ajouter à la carte Folium
-                # Ajouter à la carte Folium
         folium.GeoJson(
             data=gdf_carrieres,
-            name="Anciennes carrières (shapefile)",
+            name="Anciennes carrières",
             tooltip=folium.GeoJsonTooltip(fields=list(gdf_carrieres.columns[:3])),
             style_function=lambda x: {
                 'color': 'orange',
