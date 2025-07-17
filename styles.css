@@ -1,67 +1,101 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-/* === TITRE CUSTOM GAMING === */
+/* === POLICE GLOBALE === */
+body, .custom, .map-container, .button-retro, ::-webkit-scrollbar-thumb {
+  font-family: "Monserrat", font sans-serif,;
+}
+/* === Couleur du fond === */
+
+body {
+  background-color: hsl(0, 0%, 100%);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+.logo-bar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 12px;
+  align-items: left;
+  z-index: 1000;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* === TITRE MODERNE LÉGER NÉON === */
 .custom {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 1.2rem;
-  color: #ff66cc; /* rose néon */
-  background: linear-gradient(90deg, #1a1a40, #2a1a5e);
-  padding: 20px;
-  border: 3px dashed #66ccff; /* bleu néon */
-  text-align: center;
-  box-shadow: 0 0 10px #ff66cc;
-  border-radius: 12px;
+  font-weight: 800;
+  font-size: 2.5rem;
+  color: #352844; 
+  background: none;
+  padding: 20px 0;
+  border: none ;
+  text-align: right;
+  text-shadow: 0 0 5px rgba(212, 174, 221, 0.8); /* glow vert clair néon */
+  border-radius: 0;
   margin-bottom: 20px;
 }
 
 /* === CONTAINER DE LA CARTE === */
 .map-container {
-  height: 80vh;
-  border: 4px double #ff66cc;
+  height: 400px; /* ou une hauteur adaptée */
+  max-width: 90vw;
+  margin: 20px auto; /* espace en bas pour éviter chevauchement */
+  border: 2px double #ffffff; 
   border-radius: 12px;
-  box-shadow: 0 0 15px #66ccff;
-  background-color: #1a1a2e;
-  margin: 20px auto;
+  box-shadow: 0 0 20px #ffffff; 
+  background-color: #392f4b; 
+  position: relative;
 }
 
-/* === POPUPS (si HTML dans popup) === */
-/* .leaflet-popup-content {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 10px;
-  color: #ffffff;
-  background-color: #2d1b46;
-  padding: 5px;
-} */
+.map-container iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none;
+  display: block;
+}
+
 
 /* === SCROLLBAR CUSTOM POUR UNE VIBE RETRO === */
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #1a1a2e;
+  background: #392f4b; /* lilas foncé */
 }
 ::-webkit-scrollbar-thumb {
-  background: #ff66cc;
+  background: #a8e6cf; /* vert clair néon */
   border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff3399;
+  background: #d072a4; /* vert clair plus vif */
 }
 
-/* === BOUTONS SI TU EN AS PLUS TARD === */
-.button-retro {
-  font-family: 'Press Start 2P', cursive;
-  background-color: #ff66cc;
-  color: black;
-  padding: 10px 20px;
-  border: 2px solid #66ccff;
-  box-shadow: 0 0 10px #ff66cc;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-.button-retro:hover {
-  background-color: #66ccff;
-  color: black;
-  box-shadow: 0 0 15px #ffffff;
-}
+.btn-link {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 6px 4px;
+    background-color: #ffffff;  /* vert clair néon */
+    color: black;
+    border: 4px solid #562852ac;  /* rose lilas */
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'monserrat', sans-serif;
+    transition: background-color 0.3s ease;
+  }
+  .btn-link:hover {
+    background-color: #ffffff;  /* vert clair plus vif */
+    color: black;
+  }
