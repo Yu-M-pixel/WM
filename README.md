@@ -118,7 +118,7 @@ dans le cadre du module **WebMapping** (année universitaire 2024–2025).
 ## Contact
 
 **Auteur** : Movchan Yuliia  
-Email : movchan.yuliia@etu.univ-paris1.fr  
+Email : Yuliia.movchan@etu.univ-paris1.fr  
 
 ## Données et sources 
 
