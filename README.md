@@ -76,7 +76,7 @@ Puis ouvrir [http://localhost:8000](http://localhost:8000) dans votre navigateur
 ## Auteur
 
 Movchan Yuliia  
-[Yuliia.movchan@etu.univ-paris1.fr](mailto://Yuliia.movchan@etu.univ-paris1.fr)
+[Yuliia.movchan@etu.univ-paris1.fr](mailto:Yuliia.movchan@etu.univ-paris1.fr)
 
 ## Données et sources 
 
