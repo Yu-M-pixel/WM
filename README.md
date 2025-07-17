@@ -56,7 +56,7 @@ python3.exe -m venv .venv
 pip install -r requirements.txt
 
 # 4. Lancer l'application
-shiny run --reload app.py
+shiny run --reload app.py --port 8000
 ```
 
 Puis ouvrir [http://localhost:8000](http://localhost:8000) dans votre navigateur.
