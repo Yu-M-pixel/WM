@@ -108,7 +108,7 @@ dans le cadre du module **WebMapping** (année universitaire 2024–2025).
 
 ---
 
-## 📄 Licence et utilisation
+## Licence et utilisation
 
 - Projet à visée **pédagogique uniquement**
 - Les données utilisées sont toutes **publiques et libres d’accès** via [data.gouv.fr](https://data.gouv.fr)
