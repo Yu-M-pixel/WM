@@ -1,9 +1,8 @@
 # Patrimoine & Prévention : Cartographie des sites archéologiques et des risques à Paris
 
-> **Projet universitaire - Master 2 Télédétection & Géomatique appliquées à l’environnement**  
-> Université Paris 1 Panthéon-Sorbonne / Université Paris Cité  
-> Module : **WebMapping**
-
+Ce projet est réalisé dans le cadre du **Master 2 Télédétection & Géomatique appliquées à l’environnement**,  
+par l'**Université Paris 1 Panthéon-Sorbonne / Université Paris Cité**,  
+dans le cadre du module **WebMapping** (année universitaire 2024–2025).
 
 ##  Présentation
 
@@ -19,34 +18,22 @@ L’objectif est de **valoriser le patrimoine enfoui** tout en **évaluant sa vu
 ```
 projet/WM
 │
-├── app.py                  # Application principale (Shiny Python)
-├── styles.css              # Feuille de style personnalisée
-├── requirements.txt        # Dépendances Python
-├── README.md               # Documentation GitHub
+├── app.py                 # Fichier d'entrée  
+├── styles.css             
+├── requirements.txt        
+├── README.md               
 │
 ├── datas/
-│   ├── referentiel_archeologique_de_paris.csv
+│   ├── referentiel_archeologique_de_paris.csv      #Fichier d'exemple
 │   └── carrieres/
-│       └── plub_carriere.shp
+│       └── plub_carriere.shp       #Fichier d'exemple
 │       └── ... (autres fichiers shapefile nécessaires)
 │
-├── logo/
-│   ├── brgm.png
-│   ├── data_gouv.png
-│   └── paris_data.png
-│
-└── .venv/ (non versionné)
 ```
 
 ---
 
 ## Installation et lancement
-
-### Prérequis
-
-- Python ≥ 3.9
-- Environnement virtuel recommandé
-- Connexion Internet (pour charger les tuiles WMS)
 
 ### Étapes
 
@@ -55,11 +42,15 @@ projet/WM
 git clone https://github.com/Yu-M-pixel/WM.git
 cd WM
 
-# 2. Créer un environnement virtuel
-python -m venv .venv
+# 2. Créer et activer un environnement virtuel
+
+## Sur Linux/Mac
+python3 -m venv .venv
 source .venv/bin/activate        
 
-# Sur Windows : .venv\Scripts\activate
+## Sur Windows : 
+python3.exe -m venv .venv
+.venv\Scripts\activate.bat
 
 # 3. Installer les dépendances
 pip install -r requirements.txt
@@ -82,43 +73,10 @@ Puis ouvrir [http://localhost:8000](http://localhost:8000) dans votre navigateur
 - Histogramme des sites par arrondissement  
 
 
+## Auteur
 
-
-## Dépendances (`requirements.txt`)
-
-> Voir fichier complet [`requirements.txt`](requirements.txt)
-
-Extraits :
-```
-shiny==1.4.0
-folium==0.19.6
-ipyleaflet==0.19.2
-geopandas==...
-plotly==...
-...
-```
-
----
-
-## Contexte académique
-
-Ce projet est réalisé dans le cadre du **Master 2 Télédétection & Géomatique appliquées à l’environnement**,  
-par l'**Université Paris 1 Panthéon-Sorbonne / Université Paris Cité**,  
-dans le cadre du module **WebMapping** (année universitaire 2024–2025).
-
----
-
-## Licence et utilisation
-
-- Projet à visée **pédagogique uniquement**
-- Les données utilisées sont toutes **publiques et libres d’accès** via [data.gouv.fr](https://data.gouv.fr)
-
----
-
-## Contact
-
-**Auteur** : Movchan Yuliia  
-Email : Yuliia.movchan@etu.univ-paris1.fr  
+Movchan Yuliia  
+[Yuliia.movchan@etu.univ-paris1.fr](mailto://Yuliia.movchan@etu.univ-paris1.fr)
 
 ## Données et sources 
 
@@ -126,7 +84,7 @@ Email : Yuliia.movchan@etu.univ-paris1.fr
 2. Carrières souterraines (https://www.data.gouv.fr/fr/datasets/r/8569d081-c63e-4f63-aa4e-a8eccf70264e); 
 3. Risques naturels (https://mapsref.brgm.fr/wxs/georisques/risques); 
 4. Mouvements de terrain (https://geoservices.brgm.fr/risques);
-5. https://github.com/Rom1-B
+5. https://github.com/Romb38
 6. https://shiny.posit.co/py/
 7. https://openai.com/index/chatgpt/
 
