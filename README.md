@@ -82,11 +82,10 @@ Movchan Yuliia
 
 1. Référentiel archéologique de Paris (https://www.data.gouv.fr/api/1/datasets/r/fb42db24-7fe5-4ebd-85ad-d9d153243979); 
 2. Carrières souterraines (https://www.data.gouv.fr/fr/datasets/r/8569d081-c63e-4f63-aa4e-a8eccf70264e); 
-3. Risques naturels (https://mapsref.brgm.fr/wxs/georisques/risques); 
-4. Mouvements de terrain (https://geoservices.brgm.fr/risques);
-5. https://github.com/Romb38
-6. https://shiny.posit.co/py/
-7. https://openai.com/index/chatgpt/
+3. Enveloppe Inondations & Mouvements de terrain (https://infoterre.brgm.fr/page/geoservices-ogc);
+4. https://github.com/Romb38
+5. https://shiny.posit.co/py/
+6. https://openai.com/index/chatgpt/
 
 
 ---

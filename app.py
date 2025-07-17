@@ -236,9 +236,8 @@ ui.HTML("""
 <div style="font-family: 'Monserrat', sans-serif; font-size: 16px; line-height: 1.6;">
   <p><strong>Sources de données :</strong></p>
   <p>
-    <strong>Flux WMS :</strong><br>
-    <a href="https://mapsref.brgm.fr/wxs/georisques/risques" target="_blank" class="btn-link">Enveloppe inondation</a>
-    <a href="https://geoservices.brgm.fr/risques" target="_blank" class="btn-link">Mouvements de terrain</a>
+    <strong>Flux WMS: Enveloppe Inondations & Mouvements de terrain :</strong><br>
+    <a href="https://infoterre.brgm.fr/page/geoservices-ogc" target="_blank" class="btn-link">Enveloppe Inondations & Mouvements de terrain</a>
   </p>
   <p>
     <strong>Anciennes carrières (.shp) :</strong><br>
