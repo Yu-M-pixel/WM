@@ -1,0 +1,6 @@
+*.html
+tmp.txt
+.DS_Store
+__pycache__
+TODO
+.venv
