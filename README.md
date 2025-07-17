@@ -126,6 +126,9 @@ Email : Yuliia.movchan@etu.univ-paris1.fr
 2. Carrières souterraines (https://www.data.gouv.fr/fr/datasets/r/8569d081-c63e-4f63-aa4e-a8eccf70264e); 
 3. Risques naturels (https://mapsref.brgm.fr/wxs/georisques/risques); 
 4. Mouvements de terrain (https://geoservices.brgm.fr/risques);
+5. https://github.com/Rom1-B
+6. https://shiny.posit.co/py/
+7. https://openai.com/index/chatgpt/
 
 
 ---

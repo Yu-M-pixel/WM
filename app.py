@@ -159,7 +159,7 @@ def create_map():
 #Texte 
 
 ui.HTML(""" 
-<div style="font-family: 'Monserrat', sans-serif; font-size: 16px; line-height: 1.6;">
+<div style="font-family: 'Montserrat', sans-serif; font-size: 16px; line-height: 1.6;">
   <p style="text-align: justify;">
     <br/><br/><br/><br/><br/><br/>
     Le patrimoine archéologique, précieux témoin de notre passé, est particulièrement vulnérable face aux <strong>risques naturels</strong> qui affectent le sous-sol parisien. Parmi les menaces identifiées, les <strong>inondations potentielles</strong> liées à la Seine et les <strong>carrières souterraines non stabilisées</strong> peuvent entraîner des dommages irréversibles sur les vestiges enfouis. L’eau peut altérer les matériaux anciens ou retarder les fouilles, tandis que les effondrements liés aux cavités peuvent rendre certains sites totalement inaccessibles ou irrécupérables.
