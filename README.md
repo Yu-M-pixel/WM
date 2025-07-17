@@ -1,28 +1,3 @@
-# Gros titre H1
-
-## Un peut moins gros H2
-
-### Salut H3
-
-#### Coucou H4
-
-##### Test Bold
-
-1 - C'est quoi ton projet
-
-2 - Comment l'installer
-
-2.1 Cloner le répertoire git
-2.2 Créer un environnement virtuel (python3 -m venv .venv)
-2.3 Activer l'environnement (source .venv/bin/activate)
-2.4 Installer les dépendances (pip install -r requirements.txt)
-
-3 - Lancer le projet 
-Une fois le projet installé, pour le lancer  :
-
-```bash
-shiny run --launch-browser app.py
-```
 # Patrimoine & Prévention : Cartographie des sites archéologiques et des risques à Paris
 
 > **Projet universitaire - Master 2 Télédétection & Géomatique appliquées à l’environnement**  
@@ -42,7 +17,7 @@ L’objectif est de **valoriser le patrimoine enfoui** tout en **évaluant sa vu
 ## Structure du projet
 
 ```
-projet/
+projet/WM
 │
 ├── app.py                  # Application principale (Shiny Python)
 ├── styles.css              # Feuille de style personnalisée
@@ -77,8 +52,8 @@ projet/
 
 ```bash
 # 1. Cloner le dépôt
-git clone https://github.com/votre-utilisateur/projet-patrimoine.git
-cd projet-patrimoine
+git clone https://github.com/Yu-M-pixel/WM.git
+cd WM
 
 # 2. Créer un environnement virtuel
 python -m venv .venv
