@@ -1,22 +1,22 @@
 import folium
 import folium.raster_layers
-from ipyleaflet import Map, Marker, TileLayer
-from ipywidgets import HTML, Layout
 from shiny.express import ui,render
 from shinywidgets import render_widget
 import pandas as pd
 import plotly.express as px
-import folium 
 from folium.plugins import MarkerCluster
 from folium import FeatureGroup
 import geopandas as gpd
 
+#Chemins 
+
 DATA_PATH = ("./datas/referentiel_archeologique_de_paris.csv")
 CARRIERES_PATH = ("./datas/carrieres/plub_carriere.shp")
 
-
+#Importation du fichier des styles
 ui.include_css("./styles.css")
 
+#Titre
 ui.HTML("""
 <h2 class="custom";>
   <br>Patrimoine & Prévention:<br>
@@ -24,6 +24,7 @@ ui.HTML("""
 </h2>
 """)
 
+#Logos
 ui.HTML("""
 <div class="logo-bar">
   <img src="logo/data_gouv.png" class="logo" alt="Logo 1">
@@ -32,6 +33,7 @@ ui.HTML("""
 </div>
 """)
 
+#Texte
 ui.HTML("""
 <div style="font-family: 'Monserrat', sans-serif; font-size: 16px; line-height: 1.6;">
   <p style="text-align: justify;">
@@ -48,10 +50,8 @@ ui.HTML("""
 </div>
 """)
 
-
-@render.ui
-def create_map():
-    """
+#Fonction de création de carte 
+"""
     - Fonction qui prend en paramètre les informations à la sortie 
     de la fonction read_data
     - Centre la carte sur Paris.
@@ -60,6 +60,9 @@ def create_map():
     - Création du popup avec des informations sur chaque site archéologique
     - Ajout d'une échelle
     """
+
+@render.ui
+def create_map():
     df_points = pd.read_csv(DATA_PATH, sep=';')
 
     center_lat, center_lon = 48.8566, 2.3522
@@ -107,9 +110,8 @@ def create_map():
             popup=folium.Popup(popup_content, max_width=300), 
             icon=folium.Icon(color="pink", icon="circle")  
         ).add_to(marker_cluster)
-        my_map.options["control_scale"] = True
 
-# 6️⃣ Couche WMS BRGM — Enveloppe inondation (cours d'eau/submersion)
+# Importation du couche WMS BRGM — Enveloppe inondation 
     folium.raster_layers.WmsTileLayer(
         url="https://mapsref.brgm.fr/wxs/georisques/risques",
         name="Enveloppe inondation (EAIP)",
@@ -121,7 +123,7 @@ def create_map():
         control=True
     ).add_to(my_map)
 
-# 4️⃣ Couche WMS BRGM — Mouvements de terrain
+# Importation du couche WMS BRGM — Mouvements de terrain
     folium.raster_layers.WmsTileLayer(
         url="https://geoservices.brgm.fr/risques",
         name="Mouvements de terrain",
@@ -133,17 +135,14 @@ def create_map():
         control=True
     ).add_to(my_map)
 
-#   ANCIENNES CARRIERES 
+#   Importation du shapefile d'anciennes carrières 
     try:
-        # Charger le shapefile avec GeoPandas
         gdf_carrieres= gpd.read_file(CARRIERES_PATH)
         
-        # Reprojeter vers WGS84 si besoin (souvent les shapefiles sont en Lambert 93)
         if gdf_carrieres.crs is None:
             gdf_carrieres.set_crs(epsg=2154, inplace=True)  # Souvent Lambert 93
         gdf_carrieres = gdf_carrieres.to_crs(epsg=4326)
 
-        # Ajouter à la carte Folium
         folium.GeoJson(
             data=gdf_carrieres,
             name="Anciennes carrières",
@@ -156,17 +155,17 @@ def create_map():
         ).add_to(my_map)
 
     except Exception as e:
-        print("Erreur lors du chargement du shapefile : ", e)
+        print("Erreur shapefile :", e)
 
     folium.LayerControl().add_to(my_map)
-    
-    #return my_map  
-    
+        
     return ui.HTML(f"""
 <div class="map-container" style="height: 400px; width: 80%; margin: 20px auto;">
     {my_map._repr_html_()}
 </div>
 """)
+
+#Texte 
 
 ui.HTML(""" 
 <div style="font-family: 'Monserrat', sans-serif; font-size: 16px; line-height: 1.6;">
@@ -193,6 +192,9 @@ ui.HTML("""
 Nombre de sites archéologiques par arrondissement   
     </h2>
     """)
+
+#Création d'histogramme
+
 @render_widget
 def histogram():
     df_points = pd.read_csv(DATA_PATH, sep=';')
@@ -236,6 +238,8 @@ def histogram():
 
 
     return fig
+
+# Boutons vers le téléchargement des sources 
 
 ui.HTML("""
 <div style="font-family: 'Monserrat', sans-serif; font-size: 16px; line-height: 1.6;">

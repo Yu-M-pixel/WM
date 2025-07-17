@@ -1,10 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-/* === POLICE GLOBALE === */
-body, .custom, .map-container, .button-retro, ::-webkit-scrollbar-thumb {
-  font-family: "Monserrat", font sans-serif,;
+body, .custom, .map-container, ::-webkit-scrollbar-thumb {
+  font-family: "Montserrat", sans-serif,;
 }
-/* === Couleur du fond === */
 
 body {
   background-color: hsl(0, 0%, 100%);
@@ -18,7 +16,7 @@ body {
   left: 20px;
   display: flex;
   gap: 12px;
-  align-items: left;
+  align-items: flex-start;
   z-index: 1000;
 }
 
@@ -32,7 +30,6 @@ body {
   transform: scale(1.05);
 }
 
-/* === TITRE MODERNE LÉGER NÉON === */
 .custom {
   font-weight: 800;
   font-size: 2.5rem;
@@ -46,11 +43,10 @@ body {
   margin-bottom: 20px;
 }
 
-/* === CONTAINER DE LA CARTE === */
 .map-container {
-  height: 400px; /* ou une hauteur adaptée */
+  height: 400px; 
   max-width: 90vw;
-  margin: 20px auto; /* espace en bas pour éviter chevauchement */
+  margin: 20px auto; 
   border: 2px double #ffffff; 
   border-radius: 12px;
   box-shadow: 0 0 20px #ffffff; 
@@ -66,29 +62,28 @@ body {
 }
 
 
-/* === SCROLLBAR CUSTOM POUR UNE VIBE RETRO === */
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #392f4b; /* lilas foncé */
+  background: #392f4b; 
 }
 ::-webkit-scrollbar-thumb {
-  background: #a8e6cf; /* vert clair néon */
+  background: #a8e6cf; 
   border-radius: 5px;
   font-family: 'Poppins', sans-serif;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #d072a4; /* vert clair plus vif */
+  background: #d072a4; 
 }
 
 .btn-link {
     display: inline-block;
     padding: 8px 16px;
     margin: 6px 4px;
-    background-color: #ffffff;  /* vert clair néon */
+    background-color: #ffffff; 
     color: black;
-    border: 4px solid #562852ac;  /* rose lilas */
+    border: 4px solid #562852ac;  
     border-radius: 2px;
     text-decoration: none;
     font-weight: 600;
@@ -96,6 +91,6 @@ body {
     transition: background-color 0.3s ease;
   }
   .btn-link:hover {
-    background-color: #ffffff;  /* vert clair plus vif */
+    background-color: #ffffff; 
     color: black;
   }
